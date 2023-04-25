@@ -1,15 +1,13 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import React from 'react'
 import './App.css'
-import SignIn from './Components/Google/SignIn'
+import Home from './Components/Home/Home'
 
-function App() {
+const App = () => {
 	return (
 		<>
-			<SignIn />
+			<Home />
 		</>
-	)
+  	)
 }
 
 export default App

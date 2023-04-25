@@ -1,8 +1,10 @@
 import React from 'react'
 import {  signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { auth } from '../../firebase/firebaseConfig'
+import Welcome from '../Welcome/Welcome';
 
-const SignIn = () => {
+const SignIn = ({sUser}) => {
+    let user = []
     const handleGoogle = async (e) => {
         const provider = await new GoogleAuthProvider()
         return signInWithPopup(auth, provider).then((result) => {
@@ -10,8 +12,8 @@ const SignIn = () => {
             const credential = GoogleAuthProvider.credentialFromResult(result)
             const token = credential.accessToken
             // The signed-in user info.
-            const user = result.user
-            console.log(user.displayName)
+            user = result.user.displayName
+            sUser(user)
         }).catch((error) => {
             // Handle Errors here.
             const errorCode = error.code
@@ -29,6 +31,13 @@ const SignIn = () => {
             }
 
             console.log(errors)
+            return (
+                <>
+                    <div>
+                        <p>There was a problem signing in with your account</p>
+                    </div>
+                </>
+            )
         })
             
     }
