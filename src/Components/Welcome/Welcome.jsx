@@ -3,7 +3,10 @@ import React from 'react'
 const Welcome = ({user}) => {
     return (
         <>
-            <div>Welcome {user}</div>
+            <div>
+                <img src={user.profilePic} alt="" />
+                <p>Welcome, {user.name}</p>
+            </div>
         </>
     )
 }
